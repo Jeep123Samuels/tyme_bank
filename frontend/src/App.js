@@ -29,10 +29,17 @@ function App() {
   }
 
   const saveAccountName = async () =>{
-    const accountCreated = await postRequest(
-       'accounts',
-       {name: accountName}
-    );
+    let accountCreated = {};
+    try{
+        accountCreated = await postRequest(
+           'accounts',
+           {name: accountName}
+        );
+    }
+    catch(err){
+        alert(err.response.data[0].msg);
+        return
+    };
     const transAll = await getData(`transactions?account_id=${accountCreated.id}`);
     setAccount(accountCreated);
     setTransactions(transAll);
