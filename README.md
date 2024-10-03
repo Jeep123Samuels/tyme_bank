@@ -10,6 +10,10 @@ https://docs.docker.com/compose/install/
 After docker is installed run the script:
 ./ci/up_dev.sh
 
+Note: The migration portion sometimes get a hiccup.
+To run migration manually if an error occurs.
+-> docker exec -it tyme_bank_web_1 bash ../ci/migrations.sh
+
 When completed, navigate to the following to get
 respective sides:
 BACKEND http://localhost:5000/openapi/
@@ -24,3 +28,5 @@ FRONTEND http://localhost:3000
 To run the backend-test suite.
 After build is completed:
 docker exec -it tyme_bank_web_1 bash pytest_runner.sh
+
+
