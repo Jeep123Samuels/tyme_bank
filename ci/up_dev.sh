@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 docker-compose up -d
-ci/migrations.sh
+docker exec -it tyme_bank_web_1 bash ../ci/migrations.sh
