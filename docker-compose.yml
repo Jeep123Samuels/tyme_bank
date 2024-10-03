@@ -2,6 +2,7 @@ version: '3'
 services:
   postgres:
     image: postgres
+    container_name: tyme_bank_postgres_1
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
@@ -10,11 +11,14 @@ services:
       - postgres_data:/var/lib/postgresql/data
   frontend:
     build: ./frontend
+    image: tyme_bank_frontend
     container_name: frontend_c
     ports:
       - '3000:3000'
   web:
     build: .
+    image: tyme_bank_web
+    container_name: tyme_bank_web_1
     ports:
       - "5000:5000"
     depends_on:
